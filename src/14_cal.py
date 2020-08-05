@@ -30,3 +30,29 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+#Person inputs year and month
+#if not specified do current month and year(no args)
+#if one arg is specified assuming month print for that month and year(1 arg 1 -12)
+#if 2 arg (month and year) use users month and year (month year)
+#Print usage statement showing expected arguments with brackets
+#to get arguments use sys.argv -> to get length
+#1st arg is name of file argv[0]
+#2nd arg is month 00 - 12 argv[1]
+#3rd arg is year argv[2]
+#(calendar.Textcalendar has method that lets you format dates)
+#if argv length is 1 no inputed args
+#if argv length is 2, argv[1] = should be thru 1-12 and is the month --> that month and current year
+#if argv length is 3, argv[2]= year 4 digits --> do the month and year user inputed 
+
+x = datetime.now()
+
+
+if(len(sys.argv) == 1):
+  calendar.prmonth(x.year , x.month)
+elif(len(sys.argv) == 2):
+  calendar.prmonth(x.year, int(sys.argv[1]))
+elif(len(sys.argv) == 3):
+  calendar.prmonth(int(sys.argv[2]), int(sys.argv[1]))
+else:
+  print('enter month and year as mm/yyyy')
